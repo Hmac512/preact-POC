@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style.less';
 
+
 export default class Device extends Component {
 	state = {
 		count: 0

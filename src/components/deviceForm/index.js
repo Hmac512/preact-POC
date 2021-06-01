@@ -1,5 +1,18 @@
 import { h, Component } from 'preact';
 import style from './style.less';
+// import {Notify} from 'preact-fluid';
+import Button from 'preact-material-components/Button';
+import FormField from 'preact-material-components/FormField';
+import TextField from 'preact-material-components/TextField';
+import Snackbar from 'preact-material-components/Snackbar';
+
+import 'preact-material-components/FormField/style.css';
+import 'preact-material-components/TextField/style.css';
+import 'preact-material-components/Button/style.css';
+import 'preact-material-components/Theme/style.css';
+import 'preact-material-components/Snackbar/style.css';
+
+
 
 export default class DeviceForm extends Component {
 	state = {
@@ -31,16 +44,37 @@ export default class DeviceForm extends Component {
 	render() {
 		return (
 			<div class={style.device}>
-				<form id="rendered-form">
 				    <div class="rendered-form">
 				        <div class="">
 				            <h1 access="false" id="control-3745092">Add Device Form</h1>
 				        </div>
-				        <div class="formbuilder-text form-group field-text-1622495685145"><label for="text-1622495685145" class="formbuilder-text-label">Device Name<span class="formbuilder-required">*</span></label><input type="text" class="form-control" name="text-1622495685145" access="false" id="text-1622495685145" required="required" aria-required="true"></input></div>
-				        <div class="formbuilder-textarea form-group field-textarea-1622495939462"><label for="textarea-1622495939462" class="formbuilder-textarea-label">Description</label><textarea type="textarea" class="form-control" name="textarea-1622495939462" access="false" id="textarea-1622495939462"></textarea></div>
-				        <div class="formbuilder-textarea form-group field-textarea-1622495994429"><label for="textarea-1622495994429" class="formbuilder-textarea-label">Notes</label><textarea type="textarea" class="form-control" name="textarea-1622495994429" access="false" id="textarea-1622495994429"></textarea></div>
+				        <div>
+				        	<FormField>
+				        	    <TextField 
+        							label="Device Name"
+    							/>
+    						</FormField>
+
+				        </div>
+				        <div>
+				        	<FormField>
+				        		<TextField
+				        			textarea={true}
+				        			label="Description"
+				        		/>
+				        	</FormField>
+
+				        </div>
+
+				        <Button raised ripple onClick={()=>{
+          									this.bar.MDComponent.show({
+            								message: "Form Submitted!"
+          									});
+        									}}>
+				        	Submit
+				        </Button>
+				        <Snackbar ref={bar=>{this.bar=bar;}}/>
 				    </div>
-				</form>
 			</div>
 		);
 	}
